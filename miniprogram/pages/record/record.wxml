@@ -1,0 +1,75 @@
+<!--pages/record/record.wxml-->
+<view class="container">
+  <view class="preview-container">
+    <image
+      src="{{previewImage}}"
+      mode="aspectFit"
+      class="preview-image"
+      bindload="onImageLoad"
+      binderror="onImageError"
+    ></image>
+    <view class="image-error" wx:if="{{imageError}}">
+      <text>图片加载失败</text>
+    </view>
+
+    <!-- 水印预览 -->
+    <view class="watermark-preview" wx:if="{{watermarkEnabled && imageWidth && imageHeight}}">
+      <view class="watermark-bg">
+        <text class="watermark-text">{{watermarkText1}}</text>
+        <text class="watermark-text">{{watermarkText2}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 水印开关 -->
+  <view class="watermark-toggle" bindtap="onWatermarkToggle">
+    <view class="switch {{watermarkEnabled ? 'checked' : ''}}">
+      <view class="slider"></view>
+    </view>
+    <text class="toggle-label">添加水印</text>
+  </view>
+
+  <!-- 备注输入 -->
+  <view class="note-section">
+    <text class="note-label">备注：</text>
+    <textarea
+      class="note-input"
+      placeholder="添加备注（可选）"
+      value="{{note}}"
+      bindinput="onNoteInput"
+      maxlength="200"
+      auto-height
+      confirm-type="done"
+    ></textarea>
+    <text class="note-count">{{note.length}}/200</text>
+  </view>
+
+  <!-- 对位信息 -->
+  <view class="align-info" wx:if="{{isAlignMode}}">
+    <text class="align-label">对位拍摄</text>
+    <text class="align-text">与 {{formatDate(referenceDate)}} 的记录对位</text>
+  </view>
+
+  <!-- 操作按钮 -->
+  <view class="action-buttons">
+    <button class="btn-secondary" bindtap="retake">重拍</button>
+    <button class="btn-primary" bindtap="save" loading="{{saving}}">保存</button>
+  </view>
+</view>
+
+<!-- 日期选择弹窗 -->
+<view class="dialog-mask" wx:if="{{showDatePicker}}">
+  <view class="date-picker-dialog">
+    <view class="dialog-title">选择日期</view>
+    <picker mode="date" value="{{datePickerValue}}" start="1900-01-01" end="{{today}}" bindchange="onDateChange">
+      <view class="picker-display">{{datePickerValue}}</view>
+    </picker>
+    <picker mode="time" value="{{timePickerValue}}" bindchange="onTimeChange">
+      <view class="picker-display">{{timePickerValue}}</view>
+    </picker>
+    <view class="dialog-actions">
+      <button class="dialog-btn-cancel" bindtap="hideDatePicker">取消</button>
+      <button class="dialog-btn-confirm" bindtap="confirmDate">确定</button>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,200 @@
+/* pages/camera/camera.wxss */
+.camera-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #000;
+}
+
+.camera {
+  width: 100%;
+  height: 100%;
+}
+
+.reference-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.reference-image {
+  width: 100%;
+  height: 100%;
+}
+
+.opacity-slider {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 20rpx;
+  width: 90%;
+  margin: 0 5%;
+  height: 60rpx;
+  z-index: 30;
+  pointer-events: auto;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.crosshair {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400rpx;
+  height: 400rpx;
+  border: 2rpx solid rgba(255, 255, 255, 0.5);
+}
+
+.crosshair::before,
+.crosshair::after {
+  content: '';
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.crosshair::before {
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1rpx;
+}
+
+.crosshair::after {
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1rpx;
+}
+
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30rpx;
+  z-index: 20;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.5), transparent);
+}
+
+.icon-btn {
+  background-color: rgba(255, 255, 255, 0.3);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32rpx;
+  padding: 0;
+}
+
+.mode-info {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 24rpx;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 8rpx 20rpx;
+  border-radius: 20rpx;
+}
+
+.bottom-bar {
+  position: fixed;
+  bottom: 40rpx;
+  left: 0;
+  right: 0;
+  height: 160rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 60rpx;
+  z-index: 20;
+  background: none;
+}
+
+.switch-btn {
+  position: absolute;
+  left: 60rpx;
+  background-color: rgba(255, 255, 255, 0.3);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 80rpx;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32rpx;
+  padding: 0;
+}
+
+.album-btn {
+  position: absolute;
+  left: 60rpx;
+  background-color: rgba(255, 255, 255, 0.3);
+  color: white;
+  border: none;
+  border-radius: 8rpx;
+  padding: 20rpx 30rpx;
+  font-size: 28rpx;
+}
+
+.cancel-btn {
+  position: absolute;
+  right: 60rpx;
+  background-color: rgba(255, 255, 255, 0.3);
+  color: white;
+  border: none;
+  border-radius: 8rpx;
+  padding: 20rpx 30rpx;
+  font-size: 28rpx;
+}
+
+.shutter-btn {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  border: 8rpx solid white;
+  background-color: transparent;
+  position: relative;
+}
+
+.shutter-btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.info-text {
+  color: white;
+  font-size: 24rpx;
+  text-align: center;
+}

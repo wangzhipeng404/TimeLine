@@ -1,0 +1,79 @@
+<!--pages/index/index.wxml-->
+<view class="container">
+  <!-- 网络状态提示 -->
+  <view class="offline-toast" wx:if="{{!isOnline}}">
+    当前离线，展示的是缓存数据
+  </view>
+
+  <!-- 合集列表 -->
+  <view class="collection-list">
+    <!-- 合集卡片 -->
+    <view
+      class="collection-card"
+      wx:for="{{collections}}"
+      wx:key="id"
+      bindtap="goToCollection"
+      data-id="{{item.id}}"
+      bindlongpress="showCollectionMenu"
+      data-name="{{item.name}}"
+      data-index="{{index}}"
+    >
+      <view class="card-cover">
+        <image
+          wx:if="{{item.coverUrl}}"
+          src="{{item.coverUrl}}"
+          mode="aspectFill"
+          class="cover-image"
+        ></image>
+        <view class="cover-placeholder" wx:else>
+          🌱
+        </view>
+      </view>
+      <text class="card-name">{{item.name}}</text>
+      <text class="card-meta">{{item.recordCount}} 次记录</text>
+    </view>
+
+    <!-- 添加合集卡片 -->
+    <view
+      class="collection-card add-card"
+      bindtap="showNewCollectionDialog"
+    >
+      <view class="card-cover">
+        <view class="cover-placeholder add-placeholder">
+          +
+        </view>
+      </view>
+      <text class="card-name">新建合集</text>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{!loading && collections.length === 0}}">
+    <text class="empty-icon">📝</text>
+    <text class="empty-text">还没有记录，点击上方新建第一个合集</text>
+  </view>
+
+  <!-- 加载状态 -->
+  <view class="loading" wx:if="{{loading}}">
+    <text>加载中...</text>
+  </view>
+</view>
+
+<!-- 新建合集弹窗 -->
+<view class="dialog-mask" wx:if="{{showNewDialog}}">
+  <view class="dialog">
+    <view class="dialog-title">新建合集</view>
+    <input
+      class="dialog-input"
+      placeholder="请输入合集名称（如：龟背竹）"
+      value="{{newCollectionName}}"
+      bindinput="onNameInput"
+      confirm-type="done"
+      bindconfirm="createCollection"
+    />
+    <view class="dialog-actions">
+      <button class="dialog-btn-cancel" bindtap="hideNewCollectionDialog">取消</button>
+      <button class="dialog-btn-confirm" bindtap="createCollection">确定</button>
+    </view>
+  </view>
+</view>

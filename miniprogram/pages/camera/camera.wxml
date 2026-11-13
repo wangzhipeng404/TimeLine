@@ -1,0 +1,51 @@
+<!--pages/camera/camera.wxml-->
+<view class="camera-container">
+  <!-- 参考层（对位模式） -->
+  <view class="reference-layer" wx:if="{{mode === 'align' && referenceUrl}}">
+    <image
+      src="{{referenceUrl}}"
+      mode="aspectFill"
+      class="reference-image"
+      style="opacity: {{referenceOpacity}}"
+    ></image>
+  </view>
+  <!-- 透明度调节（顶部横向滑块） -->
+  <slider
+    class="opacity-slider"
+    value="{{referenceOpacityPercent}}"
+    min="10"
+    max="80"
+    block-size="24"
+    activeColor="#4CAF50"
+    bindchange="onOpacityChange"
+  ></slider>
+
+  <!-- 相机 -->
+  <camera
+    id="camera"
+    device-position="back"
+    flash="off"
+    class="camera"
+    bindstop="onCameraStop"
+  >
+    <!-- 取景框辅助线 -->
+    <view class="overlay">
+      <view class="crosshair"></view>
+    </view>
+  </camera>
+
+  <!-- 顶部操作栏 -->
+  <view class="top-bar"></view>
+
+  <!-- 底部操作栏 -->
+  <view class="bottom-bar">
+    <view class="switch-btn" bindtap="switchCamera" wx:if="{{false}}">
+      🔄
+    </view>
+    <view class="album-btn" bindtap="chooseImage">
+      <text>相册</text>
+    </view>
+    <view class="shutter-btn" bindtap="takePhoto"></view>
+    <view class="cancel-btn" bindtap="goBack">取消</view>
+  </view>
+</view>

@@ -1,0 +1,12 @@
+{
+  "name": "timeline",
+  "version": "1.0.0",
+  "description": "植物成长时间线记录小程序",
+  "main": "app.js",
+  "scripts": {
+    "build": "echo 'Build not required for WeChat Mini Program'"
+  },
+  "keywords": ["timeline", "plant", "wechat"],
+  "author": "",
+  "license": "MIT"
+}

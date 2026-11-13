@@ -1,0 +1,62 @@
+<!--pages/settings/settings.wxml-->
+<view class="container">
+  <view class="section">
+    <view class="section-title">数据管理</view>
+
+    <view class="setting-item" bindtap="exportBackup">
+      <text class="setting-label">导出备份</text>
+      <text class="setting-value">→</text>
+    </view>
+
+    <view class="setting-item" bindtap="clearCache">
+      <text class="setting-label">清空缓存</text>
+      <text class="setting-value">{{cacheSize}} →</text>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-title">存储信息</view>
+
+    <view class="info-card">
+      <text class="info-text">数据存储于中科院数据胶囊 S3</text>
+      <text class="info-hint">服务不承诺 SLA，请定期导出备份</text>
+    </view>
+
+    <view class="setting-item">
+      <text class="setting-label">存储桶</text>
+      <text class="setting-value">timeline</text>
+    </view>
+
+    <view class="setting-item">
+      <text class="setting-label">Endpoint</text>
+      <text class="setting-value">s3.cstcloud.cn</text>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-title">关于</view>
+
+    <view class="setting-item">
+      <text class="setting-label">版本号</text>
+      <text class="setting-value">1.0.0</text>
+    </view>
+
+    <view class="setting-item">
+      <text class="setting-label">数据来源</text>
+      <text class="setting-value">中科院数据胶囊</text>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-title">使用说明</view>
+
+    <view class="info-card">
+      <text class="info-text">
+        1. 创建合集来记录植物、装修进度等\n
+        2. 添加照片记录，支持添加备注\n
+        3. 对位拍摄：以历史照片为参考层，在同一机位重拍\n
+        4. 对比模式：按对位组横向查看历史照片
+      </text>
+    </view>
+  </view>
+</view>

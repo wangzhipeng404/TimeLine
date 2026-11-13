@@ -1,0 +1,90 @@
+<!--pages/collection/collection.wxml-->
+<view class="container">
+  <view class="header">
+    <view class="header-left">
+      <text class="collection-name">{{collectionName}}</text>
+      <text class="record-count">{{records.length}} 次记录</text>
+    </view>
+    <view class="header-actions">
+    </view>
+  </view>
+
+  <!-- 全屏轮播 -->
+  <swiper
+    class="fullscreen-swiper"
+    wx:if="{{!loading && records.length > 0}}"
+    indicator-dots
+    indicator-color="rgba(0,0,0,0.3)"
+    indicator-active-color="#4CAF50"
+    autoplay="{{false}}"
+    circular
+    interval="{{3000}}"
+    duration="{{500}}"
+    current="{{currentSlide}}"
+  >
+    <swiper-item wx:for="{{records}}" wx:key="id" wx:for-item="record" wx:for-index="idx">
+      <view class="slide" bindtap="onSlideTap" data-index="{{idx}}" wx:if="{{isOwner}}" bindlongpress="showActionMenu" data-index="{{idx}}">
+        <image
+          src="{{record.thumbUrl}}"
+          mode="widthFix"
+          class="slide-image"
+          data-index="{{idx}}"
+          bindload="onImageLoad"
+          bindtap="previewImage"
+          data-index="{{idx}}"
+        ></image>
+        <view class="slide-info">
+          <text class="slide-date">{{record.dateStr}}</text>
+          <text class="slide-note" wx:if="{{record.note}}" catchtap="showNote">{{record.note}}</text>
+        </view>
+      </view>
+      <!-- 查看者模式：无长按删除功能 -->
+      <view class="slide" bindtap="onSlideTap" data-index="{{idx}}" wx:else>
+        <image
+          src="{{record.thumbUrl}}"
+          mode="widthFix"
+          class="slide-image"
+          data-index="{{idx}}"
+          bindload="onImageLoad"
+          bindtap="previewImage"
+          data-index="{{idx}}"
+        ></image>
+        <view class="slide-info">
+          <text class="slide-date">{{record.dateStr}}</text>
+          <text class="slide-note" wx:if="{{record.note}}" catchtap="showNote">{{record.note}}</text>
+        </view>
+      </view>
+    </swiper-item>
+  </swiper>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{!loading && records.length === 0}}">
+    <text class="empty-icon">📷</text>
+    <text class="empty-text">
+      <text wx:if="{{isOwner}}">还没有记录，点击下方添加第一条</text>
+      <text wx:else>还没有内容</text>
+    </text>
+  </view>
+
+  <!-- 加载状态 -->
+  <view class="loading" wx:if="{{loading}}">
+    <text>加载中...</text>
+  </view>
+
+  <!-- 添加记录按钮（仅所有者可见） -->
+  <view class="fab" wx:if="{{isOwner}}">
+    <view class="fab-btn" bindtap="takePhoto">
+      <image class="camera-icon" src="/images/camera.png" mode="aspectFit"></image>
+    </view>
+  </view>
+</view>
+
+<!-- 添加菜单（仅所有者可见） -->
+<view class="action-sheet-mask" wx:if="{{showAddMenu && isOwner}}">
+  <view class="action-sheet">
+    <view class="action-sheet-row">
+      <view class="action-sheet-item" bindtap="chooseImage">🖼️ 从相册选择</view>
+      <view class="action-sheet-cancel" bindtap="hideAddMenu">取消</view>
+    </view>
+  </view>
+</view>

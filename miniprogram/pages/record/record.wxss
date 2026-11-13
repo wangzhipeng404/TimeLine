@@ -1,0 +1,216 @@
+/* pages/record/record.wxss */
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.preview-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000;
+  overflow: hidden;
+  position: relative;
+}
+
+.preview-image {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.image-error {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 28rpx;
+}
+
+.watermark-preview {
+  position: absolute;
+  bottom: 3%;
+  right: 3%;
+}
+
+.watermark-bg {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 10rpx 20rpx;
+  border-radius: 8rpx;
+}
+
+.watermark-text {
+  display: block;
+  color: white;
+  font-size: 24rpx;
+  line-height: 1.4;
+}
+
+.watermark-toggle {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 30rpx;
+  background-color: white;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 80rpx;
+  height: 44rpx;
+  margin-right: 20rpx;
+  background-color: #ccc;
+  border-radius: 44rpx;
+  transition: .3s;
+}
+
+.switch.checked {
+  background-color: #4CAF50;
+}
+
+.slider {
+  position: absolute;
+  height: 36rpx;
+  width: 36rpx;
+  background-color: white;
+  transition: .3s;
+  border-radius: 50%;
+  top: 4rpx;
+  left: 4rpx;
+}
+
+.switch.checked .slider {
+  transform: translateX(36rpx);
+}
+
+.toggle-label {
+  font-size: 28rpx;
+  color: #333;
+}
+
+.note-section {
+  background-color: white;
+  padding: 20rpx 30rpx;
+}
+
+.note-label {
+  display: block;
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+
+.note-input {
+  width: 100%;
+  min-height: 80rpx;
+  font-size: 28rpx;
+  background-color: #f5f5f5;
+  border-radius: 8rpx;
+  padding: 15rpx;
+  box-sizing: border-box;
+}
+
+.note-count {
+  display: block;
+  text-align: right;
+  font-size: 22rpx;
+  color: #999;
+  margin-top: 10rpx;
+}
+
+.align-info {
+  background-color: #e8f5e9;
+  padding: 20rpx 30rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}
+
+.align-label {
+  font-size: 24rpx;
+  color: #4CAF50;
+  font-weight: bold;
+}
+
+.align-text {
+  font-size: 26rpx;
+  color: #666;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 20rpx;
+  padding: 20rpx 30rpx;
+  background-color: white;
+}
+
+.btn-primary,
+.btn-secondary {
+  flex: 1;
+  padding: 24rpx 0;
+  border-radius: 12rpx;
+  font-size: 32rpx;
+  border: none;
+}
+
+.btn-primary {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.btn-secondary {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+/* 日期选择器 */
+.date-picker-dialog {
+  background-color: white;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  width: 600rpx;
+}
+
+.dialog-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 30rpx;
+}
+
+.picker-display {
+  padding: 20rpx;
+  background-color: #f5f5f5;
+  border-radius: 8rpx;
+  margin-bottom: 20rpx;
+  font-size: 28rpx;
+  text-align: center;
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20rpx;
+}
+
+.dialog-btn-cancel,
+.dialog-btn-confirm {
+  flex: 1;
+  padding: 20rpx;
+  border: none;
+  border-radius: 8rpx;
+  font-size: 28rpx;
+  margin: 0 10rpx;
+}
+
+.dialog-btn-cancel {
+  background-color: #f5f5f5;
+}
+
+.dialog-btn-confirm {
+  background-color: #4CAF50;
+  color: white;
+}

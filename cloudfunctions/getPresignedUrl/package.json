@@ -1,0 +1,16 @@
+{
+  "name": "getPresignedUrl",
+  "version": "1.0.0",
+  "description": "生成 S3 预签名 URL",
+  "main": "index.js",
+  "dependencies": {},
+  "cloudfunctionSetting": {
+    "memorySize": 256,
+    "timeout": 30
+  },
+  "envVariables": {
+    "CST_AK": "your_access_key_id",
+    "CST_SK": "your_secret_access_key",
+    "CST_BUCKET": "timeline"
+  }
+}
